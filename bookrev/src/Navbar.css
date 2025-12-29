@@ -1,0 +1,69 @@
+/* Navbar.css */
+
+/* Main navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #4a90e2;
+  color: white;
+  flex-wrap: wrap;
+  position: relative;
+  font-family: Arial, sans-serif;
+}
+
+/* Logo */
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Links container */
+.navbar-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+/* Each link */
+.navbar-links li {
+  margin-left: 20px;
+  position: relative;
+}
+
+.navbar-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.navbar-links li a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive styling for mobile */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;       /* Stack logo and links */
+    align-items: flex-start;      /* Align everything to left */
+  }
+
+  .navbar-links {
+    flex-direction: column;       /* Stack links vertically */
+    width: 100%;
+    margin-top: 10px;             /* Space below logo */
+    padding: 10px;                /* Add padding around links */
+    background-color: #3a78c2;    /* Slightly darker background for clarity */
+    border-radius: 8px;           /* Rounded edges for menu area */
+  }
+
+  .navbar-links li {
+    margin: 8px 0;                /* Vertical spacing between links */
+  }
+}

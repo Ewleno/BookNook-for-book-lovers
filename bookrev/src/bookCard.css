@@ -1,0 +1,60 @@
+.book-card {
+  background-color: #fff;
+  border-radius: 8px;
+  width: 200px;           /* fixed width */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  padding: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Image container keeps aspect ratio */
+.book-image-container {
+  width: 100%;
+  padding-top: 150%; /* 4:3 aspect ratio (height = 1.5 * width) */
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.book-image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fills container without stretching */
+}
+
+.book-card h3 {
+  margin: 5px 0;
+  font-size: 18px;
+}
+
+.book-card p {
+  margin: 3px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .book-card {
+    width: 90%;
+  }
+}
+.wishlist-btn {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
