@@ -13,13 +13,18 @@ const PORT = process.env.PORT || 5000;
 // Connect to MongoDB
 connectDB();
 
+// Trust proxy (required for Render and other cloud platforms)
+app.set('trust proxy', 1);
+
 // Middleware
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://booknook-for-book-lovers.onrender.com'  // Add your frontend URL
+    'https://booknook-for-book-lovers.onrender.com'
   ],
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -29,9 +34,10 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'your-secret-key',
   resave: false,
   saveUninitialized: false,
+  proxy: true,  // Trust the proxy
   cookie: {
-    secure: process.env.NODE_ENV === 'production',  // Use HTTPS in production
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',  // Allow cross-site cookies
+    secure: true,  // Always use HTTPS in production
+    sameSite: 'none',  // Allow cross-site cookies
     httpOnly: true,
     maxAge: 24 * 60 * 60 * 1000  // 24 hours
   }
@@ -58,4 +64,3 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
